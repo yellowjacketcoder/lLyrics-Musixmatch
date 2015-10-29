@@ -15,6 +15,7 @@ It is intended as a replacement of the built-in lyrics plugin of Rhythmbox with 
 Lyrics sources
 ---------------
 
+  - Musixmatch
   - Lyricwiki.org
   - Letras.terra.com.br
   - Vagalume.com.br

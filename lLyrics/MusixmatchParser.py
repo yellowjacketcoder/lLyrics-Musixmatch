@@ -3,15 +3,13 @@ import json
 import urllib.request
 
 class Parser(object):
-    
-    
+        
     def __init__(self, artist, title):
         self.artist = artist
         self.title = title
         self.lyrics = ""
         self.API_KEY = '1a2244035bb2332c83f241548413509f'
         self.API = 'http://api.musixmatch.com/ws/1.1/'
-
 
     def parse(self):
         METHOD = 'matcher.track.get'
