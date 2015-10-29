@@ -1,5 +1,7 @@
-lLyrics
+lLyrics Musixmatch
 ===============
+
+lLyrics Musixmatch is a fork of [lLyrics](https://github.com/dmo60/lLyrics) to work best with Musixmatch.
 
 lLyrics is a plugin for [Rhythmbox](http://projects.gnome.org/rhythmbox/), which displays lyrics for the current playing song in the sidebar.
 
@@ -52,14 +54,6 @@ lLyrics can be run without the need of any additional packages, but it is recomm
 Installation
 ---------------
 
-#### Ubuntu & derivates: PPA ####
-
-In Ubuntu based distribution, you can install this plugin via [this PPA by fossfreedom](https://launchpad.net/~fossfreedom/+archive/rhythmbox-plugins).
-
-#### Archlinux: AUR ####
-
-Archlinux user can install the plugin via [this AUR package by Bersam](https://aur.archlinux.org/packages/rhythmbox-llyrics-git/).
-
 #### Manual installation ####
 
 	1.) Press the "Download ZIP" button and extract the .zip file.
@@ -82,7 +76,7 @@ Note that you need Rhythmbox version 2.90 or higher to run lLyrics!
 
 Features
 ---------------
-  - Support for a lot of different lyrics sites (see above)
+  - Support Musixmatch and a lot of different lyrics sites (see above)
   - Integration into the Rhythmbox UI
   - Lyrics sources can be prioritised and deactivated
   - Automatically display lyrics on playback or only on-demand
@@ -99,12 +93,6 @@ Features
 Credits
 ---------------
 
-I was inspired by the awesome Songbird plugin [MLyrics](https://github.com/FreeleX/MLyrics).
-Thanks to all who contribute, report issues or help in any other way to make this plugin better.
-
-You will always find the latest version on [GitHub](https://github.com/dmo60/lLyrics).
-Please report bugs, issues or feature requests there.
-
-Help with translations is always appreciated!
+Thanks to [lLyrics](https://github.com/dmo60/lLyrics)
 
 All lyrics are property and copyright of their owners.
