@@ -1,7 +1,7 @@
 lLyrics Musixmatch
 ===============
 
-lLyrics Musixmatch is a fork of [lLyrics](https://github.com/dmo60/lLyrics) to work best with Musixmatch.
+lLyrics Musixmatch is a fork of [lLyrics](https://github.com/dmo60/lLyrics) to works best with Musixmatch.
 
 lLyrics is a plugin for [Rhythmbox](http://projects.gnome.org/rhythmbox/), which displays lyrics for the current playing song in the sidebar.
 
@@ -9,7 +9,7 @@ It is intended as a replacement of the built-in lyrics plugin of Rhythmbox with 
 
 
 
-![Screenshot](img/screenshot-small.png)
+![Screenshot](img/lLyricsMusixmatch.png)
 
 
 
@@ -93,6 +93,6 @@ Features
 Credits
 ---------------
 
-Thanks to [lLyrics](https://github.com/dmo60/lLyrics)
+Thanks to [lLyrics](https://github.com/dmo60/lLyrics).
 
 All lyrics are property and copyright of their owners.
