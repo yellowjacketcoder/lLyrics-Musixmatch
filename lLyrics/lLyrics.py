@@ -14,6 +14,7 @@
 import re
 import os
 import threading
+import traceback
 import webbrowser
 import sys
 import unicodedata
@@ -919,6 +920,7 @@ class lLyrics(GObject.Object, Peas.Activatable):
             lyrics = parser.parse()
         except Exception as e:
             print("Error in parser " + source)
+            traceback.print_exc()
             print(str(e))
             return ""
 
