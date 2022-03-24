@@ -38,6 +38,7 @@ import LyricsmaniaParser
 import DarklyricsParser
 import GeniusParser
 import VagalumeParser
+import MusixmatchParser
 import Util
 
 from lLyrics_rb3compat import ActionGroup
@@ -109,6 +110,7 @@ LYRICS_SOURCES = [
     "Genius.com",
     "Darklyrics.com",
     "Chartlyrics.com",
+    "Musixmatch"
 ]
 
 
@@ -138,6 +140,7 @@ class lLyrics(GObject.Object, Peas.Activatable):
                 "Darklyrics.com": DarklyricsParser,
                 "Genius.com": GeniusParser,
                 "Vagalume.com.br": VagalumeParser,
+                "Musixmatch": MusixmatchParser,
             }
         )
         self.add_builtin_lyrics_sources()
