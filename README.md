@@ -1,7 +1,7 @@
 lLyrics Musixmatch
 ===============
 
-lLyrics Musixmatch is a fork of [lLyrics](https://github.com/dmo60/lLyrics) with fixes from @markochk and Musixmatch support(credits to @shayanh for his original implementation of Musixmatch which has been re-written almost from scratch to fix issues.)
+lLyrics Musixmatch is a fork of [lLyrics](https://github.com/dmo60/lLyrics) with fixes from [@markochk](https://github.com/markochk/lLyrics) and Musixmatch support(credits to @shayanh for his original implementation of Musixmatch which has been re-written almost from scratch to fix issues.)
 
 Original description follows:
 
