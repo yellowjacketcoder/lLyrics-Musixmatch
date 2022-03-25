@@ -1,6 +1,9 @@
+import functools
 import json
+import traceback
 import urllib.request
 import urllib.parse
+from lxml import html
 
 
 class Parser(object):
@@ -32,6 +35,7 @@ class Parser(object):
             resp = urllib.request.urlopen(query, None, 5)
         except:
             print("Cannot connect to Musixmatch\nQuery URL:%s" % (query))
+            traceback.print_exc()
             return ""
 
         # Stop if HTTP Response code is not 200
@@ -46,7 +50,7 @@ class Parser(object):
         # Check API Response Status Code
         status_code = resp['message']['header']['status_code']
         if status_code != 200:
-            print("Error %s: %s" % (status_code, self.get_error_details_from_status_code(status_code)))
+            print("Query URL: %s\nError from Musixmatch API>> %s: %s" % (query, status_code, self.get_error_details_from_status_code(status_code)))
             return ""
 
         # Fetch and log track details and confidence score from the API
@@ -60,29 +64,32 @@ class Parser(object):
             print("Musixmatch does not have lyrics for this song")
             return ""
 
-        # Fetch track ID for getting lyrics
-        track_id = track_details['track_id']
+        # Fetch track URL for getting lyrics
+        track_url = track_details['track_share_url']
         # Fetch and return lyrics
-        self.lyrics = self.get_lyrics(track_id)
+        self.lyrics = self.get_lyrics(track_url)
 
         return self.lyrics
 
-    def get_lyrics(self, trackId):
-        METHOD = 'track.lyrics.get'
-        url = '%s%s?apikey=%s&track_id=%s' % (self.API_URL, METHOD, self.API_KEY, trackId)
+    def get_lyrics(self, url):
 
         try:
-            html = urllib.request.urlopen(url).read()
+            lyrics_request = urllib.request.Request(url, headers={
+                'Host': 'www.musixmatch.com',
+                'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36'
+            })
+            lyrics_html = urllib.request.urlopen(lyrics_request).read()
         except:
             print("Cannot connect to Musixmatch")
+            traceback.print_exc()
             return ""
 
-        # Convert response to a string
-        html = html.decode("utf-8")
-        # Parse string to JSON
-        response_json = json.loads(html)
-        # Fetch lyrics from the response json
-        lyrics = response_json['message']['body']['lyrics']['lyrics_body']
+        # Parse response to a html page
+        lyrics_html = html.fromstring(lyrics_html)
+        # Extract lyrics from html
+        lyrics = lyrics_html.xpath('//span[@class="lyrics__content__ok"]/text()')
+        # Join parts of lyrics
+        lyrics = functools.reduce(lambda a, b: a+b, lyrics)
 
         return lyrics
 
