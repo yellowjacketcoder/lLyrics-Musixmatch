@@ -3,6 +3,8 @@ lLyrics Musixmatch
 
 lLyrics Musixmatch is a fork of [lLyrics](https://github.com/dmo60/lLyrics) with fixes from [@markochk](https://github.com/markochk/lLyrics) and Musixmatch support(credits to @shayanh for his original implementation of Musixmatch which has been re-written almost from scratch to fix issues.)
 
+This plugin requires `lxml` python3 package, which should be installed by default on most Linux distributions. Just in case it's not, use `pip install lxml` to install the dependency
+
 Original description follows:
 
 lLyrics
