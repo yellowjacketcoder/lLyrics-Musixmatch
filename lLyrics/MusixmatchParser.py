@@ -55,7 +55,8 @@ class Parser(object):
 
         # Fetch and log track details and confidence score from the API
         track_details = resp['message']['body']['track']
-        confidence_score = resp['message']['header']['confidence']
+        # Confidence score is out of 1000
+        confidence_score = resp['message']['header']['confidence'] / 10
         print("Musixmatch Identified Track(Confidence %s%%) Details:>> %s" % (confidence_score, track_details))
 
         # Find if lyrics are available or terminate if not available
@@ -70,6 +71,15 @@ class Parser(object):
         self.lyrics = self.get_lyrics(track_url)
 
         return self.lyrics
+
+
+    def lyrics_adding_function(self, initial, nextValue):
+        # Check if the string b starts with an opening bracket
+        if nextValue.startswith('(') or initial.endswith(')'):
+            return initial + nextValue  # Just add b without the newline
+        else:
+            return initial + "\n" + nextValue  # Add newline after b if it doesn't start with an opening bracket
+
 
     def get_lyrics(self, url):
 
@@ -87,9 +97,9 @@ class Parser(object):
         # Parse response to a html page
         lyrics_html = html.fromstring(lyrics_html)
         # Extract lyrics from html
-        lyrics = lyrics_html.xpath('//span[@class="lyrics__content__ok"]/text()')
+        lyrics = lyrics_html.xpath("//h2[starts-with(text(), 'Lyrics of')]/following-sibling::div//div[not(*) and string-length(normalize-space(.)) > 0 and not(contains(text(), 'Add to favorites')) and not(contains(., 'Share'))]/text()")
         # Join parts of lyrics
-        lyrics = functools.reduce(lambda a, b: a+b, lyrics)
+        lyrics = functools.reduce(self.lyrics_adding_function, lyrics)
 
         return lyrics
 
